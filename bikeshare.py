@@ -164,7 +164,10 @@ def user_stats(df):
     users_count = dict(zip(users,count_users))
     print(users_count)
 
-
+"""
+Because the washington database does not have the 
+Birth Year and Gender columns, it has been included condition for not breaking the code
+"""
     if 'Gender' in df.columns:
     
         genders = df['Gender'].value_counts().keys()
@@ -196,6 +199,10 @@ def main():
 
         count = 0
         lines = 0
+
+"""        
+The loop below shows 5 rows of the dataset, whenever the answer is 'yes'       
+"""
         while True:
             
             view = input('You would like to view the 5 lines of the dataset? Enter yes or no.\n').lower()
