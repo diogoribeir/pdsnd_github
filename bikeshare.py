@@ -4,7 +4,12 @@ import numpy as np
 """
 Support for the Project
 
+LIBRARY
+
 https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.value_counts.html
+
+
+STACK OVERFLOW
 
 https://stackoverflow.com/questions/45310254/fixed-digits-after-decimal-with-f-strings
 
