@@ -2,8 +2,14 @@ import time
 import pandas as pd
 import numpy as np
 """
-Support for the Project 
+Support for the Project
+
+LIBRARY
+
 https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.value_counts.html
+
+
+STACK OVERFLOW
 
 https://stackoverflow.com/questions/45310254/fixed-digits-after-decimal-with-f-strings
 
@@ -16,6 +22,7 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -27,6 +34,7 @@ def get_filters():
     """
     print('Hello! Let\'s explore some US bikeshare data!')
 
+
     while True:
         city = input('Which city you want to analyze?\n Chicago, New York City or Washington\n').lower()
         if city.lower() not in ('chicago', 'new york city','washington'):
@@ -35,6 +43,7 @@ def get_filters():
         else:
             break
 
+
     while True:
         month = input('Which month?\n all, january, february, march, april, may or june\n').lower()
         if month.lower() not in ('all','january', 'february', 'march', 'april', 'may','june'):
@@ -42,7 +51,9 @@ def get_filters():
             continue
         else:
             break
-            
+
+
+
     while True:
         day = input('Which day of the week? \n all, sunday, monday, tuesday, wednesday, thursday, friday or saturday\n').lower()
         if day.lower() not in ('all','sunday', 'monday', 'tuesday',
@@ -68,15 +79,17 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
-    df = pd.read_csv('C:/Users/mtzdiogoribeiro/Desktop/home/' + CITY_DATA[city])
+    df = pd.read_csv(CITY_DATA[city])
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
+
 
     if month != 'all':
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month) + 1
         df = df[df['month'] == month]
+
 
     if day != 'all':
         df = df[df['day_of_week'] == day.title()]
@@ -96,7 +109,6 @@ def time_stats(df):
     common_day = df['day_of_week'].value_counts().keys()[0]
     print(f'Common day of week: {common_day}')
 
-
     hour = df['Start Time'].value_counts().keys()[0]
     hour_only = str(hour)[11:13]
     print(f'Common hour: {hour_only}')
@@ -110,7 +122,6 @@ def station_stats(df):
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
-
 
     pop_start = df['Start Station'].value_counts().keys()[0]
     count_start = df['Start Station'].value_counts().tolist()[0]
@@ -127,7 +138,6 @@ def station_stats(df):
     count_combination = df['Combination Station'].value_counts().tolist()[0]
 
     print(f'The most frequent combination is {pop_combination} with count: {count_combination}')
-
     
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -186,6 +196,7 @@ Birth Year and Gender columns, it has been included condition for not breaking t
     else:
         print('\nColumn Birth Year does not exist in dataset')
 
+
 def main():
     while True:
         city, month, day = get_filters()
@@ -198,6 +209,10 @@ def main():
 
         count = 0
         lines = 0
+
+"""        
+The loop below shows 5 rows of the dataset, whenever the answer is 'yes'       
+"""
         while True:
             
             view = input('You would like to view the 5 lines of the dataset? Enter yes or no.\n').lower()
