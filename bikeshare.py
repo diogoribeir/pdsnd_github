@@ -163,8 +163,10 @@ def user_stats(df):
     count_users = df['User Type'].value_counts().tolist()
     users_count = dict(zip(users,count_users))
     print(users_count)
-
-
+"""
+Because the washington database does not have the 
+Birth Year and Gender columns, it has been included condition for not breaking the code
+"""
     if 'Gender' in df.columns:
     
         genders = df['Gender'].value_counts().keys()
