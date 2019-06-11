@@ -2,7 +2,7 @@
 06-10-2019
 
 ### Project Title
-Python Bikeshare
+Analysis of the bikeshare database with Python
 
 ### Description
 Python code to import US bike share data and answer some questions about it by computing descriptive statistics. 
